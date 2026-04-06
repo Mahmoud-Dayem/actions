@@ -2,21 +2,12 @@ name: Echo Choice Demo
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: "Select environment"
-        required: true
-        type: choice
-        options:
-          - development
-          - staging
-          - production
-        default: development
-
+ 
 jobs:
   echo-choice:
     runs-on: ubuntu-22.04
     steps:
       - name: Echo selected environment
         run: |
-          echo "You selected: ${{ inputs.environment }}"
+          echo "You selected: ${{ github.actor }}"
+          echo "You selected: ${{ github.repository }}"
