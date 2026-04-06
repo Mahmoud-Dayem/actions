@@ -7,7 +7,7 @@ jobs:
       - name: print_eyad
         run: echo "Eyad"
       - name: print_muhamed
-        run: echo "hello ${{vars.MYNAME}}
+        run: echo "hello ${{vars.MYNAME}}"
        
         
   
