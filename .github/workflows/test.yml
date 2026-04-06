@@ -7,6 +7,6 @@ jobs:
       - name: print_eyad
         run: echo "Eyad"
       - name: print_muhamed
-        run: echo "hello ${{secrets.DOCKER_PASSW0RD
-}}"
+        run: echo "hello ${{secrets.DOCKER_PASSW0RD}}"
+
        
