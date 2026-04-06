@@ -1,0 +1,14 @@
+name: eyad muhamed mazen ammaze
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: print_eyad
+        run: echo "Eyad"
+      - name: print_muhamed
+        run: echo "muhamed"
+       
+        
+  
+   
