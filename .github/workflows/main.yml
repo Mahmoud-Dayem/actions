@@ -1,13 +1,15 @@
-name: eyad muhamed mazen ammaze
-on: workflow_dispatch
+name: Git hub action demo
+on: push
 jobs:
-  build:
+  action-demo:
     runs-on: ubuntu-22.04
     steps:
-      - name: print_eyad
-        run: echo "Eyad"
-      - name: print_muhamed
-        run: echo "hello  "
+      - name: Check out the code
+        uses: actions/checkout@v4
+      - name: print html content
+        run: cat index.html
+        
+ 
 
        
         
