@@ -1,0 +1,22 @@
+name: if-demo
+on: 
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    outputs:
+        version: ${{steps.step1.outputs.version}}
+
+
+    steps:
+      - name: run if step is main
+        if: github.ref == 'refs/heads/main'
+        run: echo "Runnig for if main branch"  
+
+
+      - name: run this step no condition
+        run: echo "No Condition"   
+  
