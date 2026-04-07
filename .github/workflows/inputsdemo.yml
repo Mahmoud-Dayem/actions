@@ -15,4 +15,4 @@ jobs:
           echo "You selected: ${{ github.actor }}"
           echo "You selected: ${{ github.repository }}"
       - name: Print environment
-        run: printenv
+        run: echo $GITHUB_SHA
