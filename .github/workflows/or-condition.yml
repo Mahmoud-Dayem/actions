@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - develop
+      - feature/**
 jobs:
   demo:
     runs-on: ubuntu-latest
@@ -11,11 +12,11 @@ jobs:
     steps:
 
       - name: get actor name
- 
-        run: echo "Actor name is ${{ github.actor}}"  
+        run: echo "Actor name is ${{ github.actor}} gg"  
+
       - name: run for mahmoud   or eyad
     
-        if: github.action_status == 'mahmoud-dayem' || github.actor == 'eyad'
+        if: github.actor== 'mahmoud-dayem' || github.actor == 'eyad'
         run: echo "Runnig if mahmoud or eyad"  
 
  
