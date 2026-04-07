@@ -7,8 +7,14 @@ on:
 jobs:
   demo:
     runs-on: ubuntu-latest
+    
     steps:
+
+      - name: get actor name
+ 
+        run: echo "Actor name is ${{ github.actor}}"  
       - name: run for mahmoud   or eyad
+    
         if: github.action_status == 'mahmoud-dayem' || github.actor == 'eyad'
         run: echo "Runnig if mahmoud or eyad"  
 
