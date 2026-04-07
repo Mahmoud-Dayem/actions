@@ -1,0 +1,15 @@
+name: or-demo
+on: 
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run for mahmoud   or eyad
+        if: github.action_status == 'mahmoud' || github.actor == 'eyad'
+        run: echo "Runnig if mahmoud or eyad"  
+
+ 
