@@ -1,4 +1,4 @@
-name: test basma
+name: output-from-step1
 on: push
 jobs:
   build:
