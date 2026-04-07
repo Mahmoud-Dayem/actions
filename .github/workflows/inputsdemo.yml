@@ -2,7 +2,10 @@ name: Echo Choice Demo
 
 on:
   workflow_dispatch:
+env:
+      
  
+  work_env: ammar
 jobs:
   echo-choice:
     runs-on: ubuntu-22.04
