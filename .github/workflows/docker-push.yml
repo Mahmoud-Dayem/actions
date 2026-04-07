@@ -3,10 +3,12 @@ name: Flask App CI/CD
 
 on:
   push:
-    branches: [main]
+    tags:
+        - 'v*.*.*'
 
 jobs:
   use-reusable:
+    if: ${{ false }}
     uses: ./.github/workflows/reusable-ci.yml
     with:
       image-name: yourdockerhub/flask-app:latest
