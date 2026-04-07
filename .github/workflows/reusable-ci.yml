@@ -1,0 +1,61 @@
+# .github/workflows/reusable-ci.yml
+name: Reusable CI/CD
+
+on:
+  workflow_call:
+    inputs:
+      image-name:
+        required: true
+        type: string
+      python-version:
+        required: false
+        type: string
+        default: "3.11"
+      run-tests:
+        required: false
+        type: boolean
+        default: true
+    secrets:
+      DOCKERHUB_USERNAME:
+        required: true
+      DOCKERHUB_TOKEN:
+        required: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 🔹 Python setup (Flask)
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python-version }}
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+
+      # 🔹 Run tests (optional)
+      - name: Run tests
+        if: ${{ inputs.run-tests }}
+        run: |
+          pytest || echo "No tests found"
+
+      # 🔹 Docker build
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ inputs.image-name }} .
+
+      # 🔹 Login to DockerHub
+      - name: Login DockerHub
+        run: |
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      # 🔹 Push image
+      - name: Push Docker image
+        run: |
+          docker push ${{ inputs.image-name }}

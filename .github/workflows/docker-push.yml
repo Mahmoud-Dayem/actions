@@ -1,0 +1,17 @@
+# .github/workflows/main.yml
+name: Flask App CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  use-reusable:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      image-name: yourdockerhub/flask-app:latest
+      python-version: "3.11"
+      run-tests: true
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
